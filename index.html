@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main-container{
+            /* margin: 10px; */
+            position: relative;
+            height: auto ;
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            /* flex-direction: column; */
+            background-color: rgb(47, 47, 47);
+        }
+        #search,#search1{
+
+            height: 36px;
+            border: none;
+            padding: 24px;
+            width: 240px;
+            background-color: rgb(241, 239, 228);
+            border-radius: 5px;
+           
+        }
+        #search::placeholder{
+            /* font-weight: 500; */
+            font-size: 15px;
+            padding: 5px;
+            text-transform: capitalize;
+        }
+        #search1::placeholder{
+            /* font-weight: 500; */
+            font-size: 15px;
+            padding: 5px;
+            text-transform: capitalize;
+        }
+        .output,.output1{
+        
+            margin: 50px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            background-color: rgb(60, 60, 60);
+            border-radius: 10px;
+        }
+        p{
+            margin: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            color:rgb(226, 204, 75);
+            /* background-color: blanchedalmond; */
+            padding: 10px;
+            width: 200px;
+        }
+        h1{
+            text-align: center;
+            font-size: 36px;
+            padding: 15px;
+            text-transform: capitalize;
+            font-weight: 700;
+            color:white ;
+            /* background-color: blanchedalmond; */
+          
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        
+    
+        <div class="output">
+            <h1>Keys Only</h1>
+            <input id="search" autocomplete="off" name="username" type="text" placeholder="enter something...">
+            <p class="keypressed">KeyPressed:</p>
+            <p class="keycode">KeyCode:</p>
+            <p class="charcode">CharCode:</p>
+            <p class="eventtype">EventType:</p>
+        </div>
+        
+        <div class="output1">
+            <h1>Text Content</h1>
+            <input id="search1" autocomplete="off" name="username" type="text" placeholder="enter something...">
+            <p class="key">InputValue:</p>
+            <p class="inpname">InputName:</p>
+            <p class="inptype">Input Type:</p>
+            <p class="inpevent">EventType:</p>
+        </div>
+        <footer>
+        </footer>
+    </div>
+    <script>
+
+        const handleKeyPress=(event)=>{
+            document.querySelector('.keypressed').innerHTML=`KeyPressed: ${event.key}`
+            document.querySelector('.keycode').innerHTML=`KeyCode: ${event.code}`
+            document.querySelector('.charcode').innerHTML=`CharCode: ${event.key.charCodeAt(0)}`
+            document.querySelector('.eventtype').innerHTML=`EventType: ${event.type}`
+        }
+        const handleKeyPress1=(event)=>{
+            console.log(event)
+            console.log(event.target.name)
+            console.log(event.target.value)
+            console.log(event.inputType)
+            console.log(event.type)
+
+            document.querySelector('.key').innerHTML=`Input Value: ${event.target.value}`
+            document.querySelector('.inpname').innerHTML=`Input Name: ${event.target.name}`
+            document.querySelector('.inptype').innerHTML=`Input Type: ${event.inputType}`
+            document.querySelector('.inpevent').innerHTML=`Event Type: ${event.type}`
+        }
+        var myInput=document.getElementById("search")
+        var myInput1=document.getElementById("search1")
+        myInput.addEventListener('keypress',handleKeyPress)
+        // myInput.addEventListener('keyup',handleKeyPress)
+        myInput1.addEventListener('input',handleKeyPress1)
+        // myInput1.addEventListener('change',handleKeyPress1)
+    </script>
+    
+</body>
+</html>
